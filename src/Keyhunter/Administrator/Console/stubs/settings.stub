@@ -1,0 +1,39 @@
+<?php
+
+require_once base_path('vendor/keyhunter/administrator/src/helpers.php');
+
+return [
+    'title' => '{{title}}',
+
+    'model' => 'Keyhunter\Administrator\Model\Settings',
+
+    'permission' => function()
+    {
+        return true;
+    },
+
+    /*
+    |-------------------------------------------------------
+    | Validation rules
+    |-------------------------------------------------------
+    */
+    'rules' => [
+        'admin::email'   => 'required|email',
+        'support::email' => 'required|email'
+    ],
+
+    'edit_fields' => [
+        'admin::email' => ['type' => 'email'],
+
+        'support::email' => ['type' => 'email'],
+
+        'site::about' => ['type' => 'textarea'],
+
+        'site::roles' => [
+            'type'    => 'select',
+            'options' => ['guest', 'member', 'admin', 'content manager']
+        ],
+
+        'site::down' => ['type' => 'bool']
+    ]
+];

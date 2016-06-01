@@ -1,0 +1,31 @@
+{
+    "name": "keyhunter/administrator",
+    "description": "",
+    "authors": [
+        {
+            "name": "Keyhunter",
+            "email": "withoutgmail@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "laravelcollective/html": "~5.2",
+        "intervention/image": "2.3.0",
+        "intervention/imagecache": "2.3.0",
+        "davejamesmiller/laravel-breadcrumbs": "~3.0"
+    },
+    "require-dev": {
+        "phpspec/phpspec": "2.1.*@dev",
+        "mockery/mockery": "0.9.*@dev",
+        "codeception/codeception": "2.1.*@dev"
+    },
+    "autoload": {
+        "psr-0": {
+            "Keyhunter\\Administrator": "src/"
+        },
+        "files": [
+            "src/helpers.php"
+        ]
+    },
+    "minimum-stability": "dev"
+}
