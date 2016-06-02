@@ -39,6 +39,6 @@ If you get the error on ``` db:seed ``` command use ``` composer dump-autoload `
 
 - Done. Now go to ``` localhost:8000\admin ``` to login use:
 ```
-login: keyhunter@gmail.com
-pass: admin123
+  login: keyhunter@gmail.com
+  pass: admin123
 ```
