@@ -29,3 +29,8 @@
     <script type="text/javascript" src="{{ asset($assets . '/js/plugins/tinymce/jquery.tinymce.min.js') }}"></script>
     <script>Editors.init.tinymce();</script>
 @endif
+
+<script src="<?= asset($assets . '/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js') ?>" type="text/javascript"></script>
+<script>
+    $('textarea[data-editor=wysihtml5]').wysihtml5();
+</script>

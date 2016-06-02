@@ -99,6 +99,7 @@
 <!-- Admin Main Js -->
 <script src="<?= asset($assets . '/js/main.js') ?>" type="text/javascript"></script>
 
+<script src="<?= asset($assets . '/plugins/daterangepicker/moment.min.js') ?>"></script>
 <script src="<?= asset($assets . '/plugins/datepicker/bootstrap-datepicker.js') ?>" type="text/javascript"></script>
 <script src="<?= asset($assets . '/plugins/daterangepicker/daterangepicker.js') ?>" type="text/javascript"></script>
 
