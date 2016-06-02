@@ -122,6 +122,24 @@ if (! function_exists('filter_text'))
             'query' => $query
         ];
     }
+	
+	/**
+     * Generate NumberRange filter config
+     *
+     * @param string $label
+     * @param array $params
+     * @param Closure $query
+     * @return array
+     */
+    function filter_number_range($label = '', array $params, Closure $query = null)
+    {
+        return [
+            'type' => 'number_range',
+            'label' => $label,
+            'params' => $params,
+            'query' => $query
+        ];
+    }
 
     /**
      * Generate DateRange filter config
