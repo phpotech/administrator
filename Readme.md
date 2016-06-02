@@ -1,11 +1,19 @@
 # Admin panel for Laravel 5.2
 
+**This package require this packages:**
+
+```
+composer require keyhunter/multilingual dev-master
+composer require keyhunter/translatable dev-master
+```
+install this packages **before** installing ``` keyhunter/administrator ```
+
 ## Intallation
 
 - Install the package:
 
 ```
-composer require keyhunter/administrator
+composer require keyhunter/administrator dev-master
 ```
 
 - Add **ServiceProvider.php** to the ``` $providers ``` in *{root_project}\config\app.php* :
@@ -24,6 +32,11 @@ and remove create_users_table from *{root_project}\database\migrations* if exist
 php artisan vendor:publish
 ```
 
+- Run this command:
+```
+composer dump-autoload
+```
+
 - Migrate the required tables:
 
 ```
@@ -35,7 +48,17 @@ php artisan migrate
 ```
 php artisan db:seed
 ```
-If you get the error on ``` db:seed ``` command use ``` composer dump-autoload ``` and repeat ```db:seed``` again
+
+- Go to ```App\User::class``` and change:
+
+**from:**
+```
+use Illuminate\Foundation\Auth\User as Authenticatable;
+```
+**to:**
+```
+use Keyhunter\Administrator\AuthRepository as Authenticatable;
+```
 
 - Done. Now go to ``` localhost:8000\admin ``` to login use:
 ```
