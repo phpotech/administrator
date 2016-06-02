@@ -1,6 +1,7 @@
 {
     "name": "keyhunter/administrator",
     "description": "",
+	"version": "dev-develop",
     "authors": [
         {
             "name": "Keyhunter",
