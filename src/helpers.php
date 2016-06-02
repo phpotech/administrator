@@ -421,7 +421,7 @@ if ( ! function_exists('array_fetch')) {
 
 /** get administrator version */
 function keyhunter_administrator_version () {
-    return '1.0.0';
+    return '1.0.1';
 }
 
 /** render copyright. */
