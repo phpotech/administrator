@@ -15,7 +15,7 @@ use Illuminate\Contracts\Hashing\Hasher;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Composer; // from 5,2
 use Illuminate\Support\Collection;
-use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\ServiceProvider as Provider;
 use Request;
 use Route;
 use Keyhunter\Administrator\Columns\Factory AS Columns;
@@ -28,7 +28,7 @@ use Keyhunter\Administrator\Schema\Factory AS Schema;
 use Keyhunter\Multilingual\MultilingualServiceProvider;
 use Keyhunter\Translatable\TranslatableServiceProvider;
 
-class AdministratorServiceProvider extends ServiceProvider
+class ServiceProvider extends Provider
 {
     /**
      * Indicates if loading of the provider is deferred.
