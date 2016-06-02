@@ -2,6 +2,11 @@
 
 use Keyhunter\Administrator\Exception;
 
+/** get administrator version */
+function keyhunter_administrator_version () {
+    return '1.0.3';
+}
+
 if (! function_exists('output_boolean'))
 {
     function output_boolean($row, $field = 'active')
@@ -417,11 +422,6 @@ if ( ! function_exists('array_fetch')) {
         
         return array_values($results);
     }
-}
-
-/** get administrator version */
-function keyhunter_administrator_version () {
-    return '1.0.1';
 }
 
 /** render copyright. */

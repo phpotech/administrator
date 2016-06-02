@@ -106,6 +106,12 @@ return [
 
         'title'    => ['type' => 'text'],
 
-        'active'   => ['type'    => 'bool'],
+        'active' => [
+            'type' => 'select',
+            'options' => [
+                0 => 'No',
+                1 => 'Yes'
+            ]
+        ]
     ]
 ];

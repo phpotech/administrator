@@ -3,11 +3,12 @@
 use Carbon\Carbon;
 use Illuminate\Auth\Guard;
 use Illuminate\Database\Eloquent\Builder;
+use Keyhunter\Administrator\Model\Role;
 use Keyhunter\Administrator\Schema\Factory AS Schema;
 use Keyhunter\Administrator\Schema\SchemaInterface;
 
 return [
-    'title'  => 'Admins _notworking',
+    'title'  => 'Admins',
     'model'  => 'App\User',
 
     /*
@@ -24,9 +25,8 @@ return [
 
         'info' => [
             'title'     => 'Info',
-            'sort_field'=> 'username',
+            'sort_field'=> 'name',
             'elements'  => [
-                'username' => ['standalone' => true],
                 'email' => [
                     'output' => '<a href="mailto:(:email)">(:email)</a>',
                 ],
@@ -38,6 +38,12 @@ return [
             'visible' => function() {},
             'output' => function($row) {
                 return output_boolean($row);
+            }
+        ],
+        'role_id' => [
+            'title' => 'Role',
+            'output' => function ($row) {
+                return $row->role->name;
             }
         ],
         'dates' => [
@@ -85,7 +91,7 @@ return [
     */
     'query' => function(Builder $query)
     {
-        $query->where('role', '=', 'admin');
+        $query->where('role_id', Role::whereName('admin')->first()->id);
     },
 
     /*
@@ -94,13 +100,10 @@ return [
     |-------------------------------------------------------
     */
     'filters' => [
-        'username' => [
-            'type' => 'text',
-            'query' => function($query, $value = '')
-            {
-                $query->where('users.username', '=', $value);
-            }
+        'email' => [
+            'type' => 'text'
         ],
+
         'active' => [
             'type' => 'select',
             'options' => [
@@ -126,10 +129,22 @@ return [
     'edit_fields' => [
         'id'       => ['type' => 'key'],
 
-        'username' => ['type' => 'text'],
-
         'email' => [
             'type'  => 'email'
+        ],
+
+        'role_id' => [
+            'type'    => 'select',
+            'options' => function() {
+                $options = [];
+                Role::whereActive(1)
+                    ->get()
+                    ->each(function ($role) use (&$options){
+                        $options[$role->id] = $role->name;
+                    });
+
+                return $options;
+            }
         ],
 
         'name' => [
@@ -138,7 +153,8 @@ return [
 
         'active' => [
             'title' => 'Active',
-            'type' => 'bool'
+            'type' => 'select',
+            'options' => ['Disable', 'Active']
         ]
     ]
 ];

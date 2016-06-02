@@ -10,8 +10,8 @@ return [
     'auth_credential' => 'password',
     'auth_conditions' => [
         'active' => 1,
-        'role'   => function () {
-            return 'admin';
+        'role_id'   => function () {
+            return \Keyhunter\Administrator\Model\Role::whereName('admin')->first()->id;
         }
     ],
     'auth_model'      => 'App\User',
@@ -39,15 +39,9 @@ return [
      *
      * @type string
      */
-    'home_page'       => 'admin/members',
-    /**
-     * Show search bar in nav-sidebar.
-     */
-    'show_search_bar' => false,
-    /**
-     * Show user panel in sidebar nav
-     */
-    'show_user_panel' => true,
+    'home_page'       => 'admin/dashboard',
+    'show_user_panel' => 'false',
+    'show_search_bar' => 'false', //todo: repair this stuff
     /**
      * Default locale
      */
