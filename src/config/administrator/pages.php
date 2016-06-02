@@ -1,7 +1,7 @@
 <?php
 
-//require_once base_path('vendor/keyhunter/administrator/src/helpers.php');
-require_once base_path('packages/keyhunter/administrator/src/helpers.php');
+require_once base_path('vendor/keyhunter/administrator/src/helpers.php');
+//require_once base_path('packages/keyhunter/administrator/src/helpers.php');
 
 return [
     'title'  => 'Pages 2',
