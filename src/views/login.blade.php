@@ -11,9 +11,9 @@
     <!-- bootstrap 3.0.2 -->
     <link href="<?= asset($assets . '/css/bootstrap.min.css') ?>" rel="stylesheet" type="text/css"/>
     <!-- Theme style -->
-    <link href="<?= asset($assets . '/lte2/dist/css/AdminLTE.min.css') ?>" rel="stylesheet" type="text/css"/>
+    <link href="<?= asset($assets . '/dist/css/AdminLTE.min.css') ?>" rel="stylesheet" type="text/css"/>
     <!-- iCheck -->
-    <link href="<?= asset($assets . '/lte2/plugins/iCheck/square/blue.css') ?>" rel="stylesheet" type="text/css"/>
+    <link href="<?= asset($assets . '/plugins/iCheck/square/blue.css') ?>" rel="stylesheet" type="text/css"/>
 </head>
 <body class="hold-transition login-page">
 @include('administrator::partials.messages')
@@ -77,10 +77,10 @@
     <!-- /.login-box-body -->
 </div>
 
-<script src="<?= asset($assets . '/lte2/plugins/jQuery/jQuery-2.2.0.min.js') ?>"></script>
+<script src="<?= asset($assets . '/plugins/jQuery/jQuery-2.2.0.min.js') ?>"></script>
 
-<script src="<?= asset($assets . '/lte2/bootstrap/js/bootstrap.min.js') ?>"></script>
+<script src="<?= asset($assets . '/bootstrap/js/bootstrap.min.js') ?>"></script>
 
-<script src="<?= asset($assets . '/lte2/plugins/iCheck/icheck.min.js') ?>"></script>
+<script src="<?= asset($assets . '/plugins/iCheck/icheck.min.js') ?>"></script>
 </body>
 </html>
