@@ -1,13 +1,10 @@
 <?php
 
-use Carbon\Carbon;
-use Illuminate\Auth\Guard;
 use Illuminate\Database\Eloquent\Builder;
-use Keyhunter\Administrator\Schema\Factory AS Schema;
-use Keyhunter\Administrator\Schema\SchemaInterface;
+use Keyhunter\Administrator\Model\Role;
 
 return [
-    'title'  => 'Members _notworking',
+    'title'  => 'Members',
     'model'  => 'App\User',
 
     /*
@@ -24,20 +21,16 @@ return [
         'info' => [
             'title'     => 'Info',
             'elements'  => [
-                'username' => ['standalone' => true],
                 'email' => [
                     'output' => '<a href="mailto:(:email)">(:email)</a>',
                 ],
                 'name'
             ]
         ],
-        'birth_date' => [
-            'title' => 'Age',
-            'output' => function($row)
-            {
-                $date  = Carbon::createFromTimestamp(strtotime($row->birth_date));
-                $years = $date->diffInYears();
-                return sprintf(trans_choice('%d year|%d years|%d years', $years), $years);
+        'role_id' => [
+            'title' => 'Role',
+            'output' => function ($row) {
+                return $row->role->name;
             }
         ],
         'active' => [
@@ -92,7 +85,7 @@ return [
     */
     'query' => function(Builder $query)
     {
-        $query->whereRole('member');
+        $query->where('role_id', '!=', Role::whereName('admin')->first()->id);
     },
 
     /*
@@ -104,19 +97,18 @@ return [
     |
     */
     'filters' => [
-        'username' => [
-            'type' => 'text',
-            'query' => function($query, $value = '')
-            {
-                $query->where('users.username', '=', $value);
-            }
-        ],
-        'role' => [
+        'role_id' => [
+            'label' => 'Role',
             'type' => 'select',
-            //'options' => ['guest' => 'Guest', 'member' => 'Member', 'admin' => 'Admin']
-            'options' => function(SchemaInterface $schema)
-            {
-                return ['' => '-- Any --'] + ($schema->get('role')->getValues());
+            'options' => function() {
+                $options = [];
+                Role::whereActive(1)
+                    ->get()
+                    ->each(function ($role) use (&$options){
+                        $options[$role->id] = $role->name;
+                    });
+
+                return ['' => '-- Any --'] + ($options);
             },
             'multiple' => false
         ],
@@ -146,12 +138,18 @@ return [
     'edit_fields' => [
         'id'       => ['type' => 'key'],
 
-        'username' => ['type' => 'text'],
-
-        //'time' => ['type' => 'time'],
-        'role' => [
+        'role_id' => [
             'type'    => 'select',
-            'options' => 'users.role'
+            'options' => function() {
+                $options = [];
+                Role::whereActive(1)
+                    ->get()
+                    ->each(function ($role) use (&$options){
+                        $options[$role->id] = $role->name;
+                    });
+
+                return $options;
+            }
         ],
 
         'email' => [
@@ -162,13 +160,10 @@ return [
             'type' => 'text'
         ],
 
-        'birth_date' => [
-            'type' => 'date'
-        ],
-
         'active' => [
             'title' => 'Active',
-            'type' => 'bool'
+            'type' => 'select',
+            'options' => ['Disable', 'Active']
         ]
     ]
 ];

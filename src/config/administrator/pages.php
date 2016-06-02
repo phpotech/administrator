@@ -1,9 +1,12 @@
 <?php
 
-require_once base_path('vendor/keyhunter/administrator/src/helpers.php');
+//require_once base_path('vendor/keyhunter/administrator/src/helpers.php');
+require_once base_path('packages/keyhunter/administrator/src/helpers.php');
 
 return [
-    'title'  => 'Pages',
+    'title'  => 'Pages 2',
+
+    'description' => 'Silence is gold.',
 
     'model'  => 'Keyhunter\Administrator\Model\Page',
 
@@ -114,9 +117,13 @@ return [
 
         'title'    => form_text() + translatable(),
 
-        'body'    => form_tinymce() + translatable(),
+//        'body'    => form_ckeditor() + translatable(),
+        'body'    => form_wysi_html5() + translatable(),
 
-        'active' => form_boolean(),
+        'active' => filter_select('Active', [
+            0 => 'No',
+            1 => 'Yes'
+        ]),
 
     ]
 ];

@@ -17,11 +17,17 @@ return [
 
         'site::about' => ['type' => 'textarea'],
 
-        'site::roles' => [
-            'type'    => 'select',
-            'options' => ['guest', 'member', 'admin', 'content manager']
-        ],
+//        'site::roles' => [
+//            'type'    => 'select',
+//            'options' => ['guest', 'member', 'admin', 'content manager']
+//        ],
 
-        'site::down' => ['type' => 'bool']
+        'site::down' => [
+            'type' => 'select',
+            'options' => [
+                1 => 'enable',
+                0 => 'disable'
+            ]
+        ]
     ]
 ];

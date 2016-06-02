@@ -22,20 +22,32 @@
  *	)
  */
 return [
-//    'dashboard' => [
-//        'icon'  => 'fa-dashboard',
-//        'route' => 'admin_dashboard',
-//    ],
+//     'App' => [
+//          'page_header' => 'Some Title' // work only for parent category
+//          'dashboard' => [
+//          'icon'  => 'fa-dashboard',
+//          'route' => 'admin_dashboard',
+//          ]
+//     ]
     'Roles' => [
-        'icon' => 'fa-folder',
+        'page_header' => 'not working',
+//        'icon' => 'fa fa-circle-o',
         'pages' => [
-            'admins',
-            'members',
+            'admins' => [
+                'icon' => 'fa fa-user'
+            ],
+            'members' => [
+                'icon' => 'fa fa-users'
+            ]
         ]
     ],
     'Content' => [
+        'page_header' => 'main content site',
+//        'icon' => 'fa fa-circle-o',
         'pages' => [
-            'pages'
+            'pages' => [
+                'icon' => 'fa fa-file-text-o'
+            ]
         ]
     ]
 ];
