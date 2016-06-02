@@ -30,7 +30,9 @@
     <script>Editors.init.tinymce();</script>
 @endif
 
+@if (in_array('wysihtml5', $editors))
 <script src="<?= asset($assets . '/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js') ?>" type="text/javascript"></script>
 <script>
     $('textarea[data-editor=wysihtml5]').wysihtml5();
 </script>
+@endif
