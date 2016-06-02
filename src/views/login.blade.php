@@ -11,7 +11,7 @@
     <!-- bootstrap 3.0.2 -->
     <link href="<?= asset($assets . '/css/bootstrap.min.css') ?>" rel="stylesheet" type="text/css"/>
     <!-- Theme style -->
-    <link href="<?= asset($assets . '/dist/css/AdminLTE.min.css') ?>" rel="stylesheet" type="text/css"/>
+    <link href="<?= asset($assets . '/css/AdminLTE.min.css') ?>" rel="stylesheet" type="text/css"/>
     <!-- iCheck -->
     <link href="<?= asset($assets . '/plugins/iCheck/square/blue.css') ?>" rel="stylesheet" type="text/css"/>
 </head>
@@ -79,7 +79,7 @@
 
 <script src="<?= asset($assets . '/plugins/jQuery/jQuery-2.2.0.min.js') ?>"></script>
 
-<script src="<?= asset($assets . '/bootstrap/js/bootstrap.min.js') ?>"></script>
+<script src="<?= asset($assets . '/js/bootstrap.min.js') ?>"></script>
 
 <script src="<?= asset($assets . '/plugins/iCheck/icheck.min.js') ?>"></script>
 </body>
