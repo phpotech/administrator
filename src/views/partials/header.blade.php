@@ -13,7 +13,7 @@
         </a>
         <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
-                @include('administrator::partials.badges')
+                {{--@include('administrator::partials.badges')--}}
 
                 <li>
                     <a class="dropdown-toggle active" href="{{ route('admin_model_index', ['page' => 'languages']) }}">
