@@ -122,6 +122,14 @@ if (! function_exists('filter_text'))
             'query' => $query
         ];
     }
+
+    function filter_hidden(Closure $query = null)
+    {
+        return [
+            'type' => 'hidden',
+            'query' => $query
+        ];
+    }
 	
 	/**
      * Generate NumberRange filter config

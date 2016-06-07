@@ -212,6 +212,10 @@ abstract class Repository extends Eloquent implements RepositoryInterface
                 list($from, $to) = explode(',', $value);
                 $this->query->whereBetween("{$table}.{$name}", [$from, $to]);
                 break;
+
+             case 'hidden':
+                $this->query->where("{$table}.{$name}", $value);
+                break;
         }
     }
 }

@@ -20,7 +20,8 @@ class Filter implements FilterInterface
         'select'        => 'Filters\Element\Select',
         'date'          => 'Filters\Element\Date',
         'daterange'     => 'Filters\Element\Daterange',
-        'number_range'  => 'Filters\Element\NumberRange'
+        'number_range'  => 'Filters\Element\NumberRange',
+        'hidden'        => 'Filters\Element\Hidden'
     ];
 
     /**

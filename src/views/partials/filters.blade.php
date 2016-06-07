@@ -8,11 +8,15 @@
             <div class="col-xs-10">
                 <div class="row">
                     @foreach($filter as $element)
-                    <div class="col-xs-3">
-                        <div class="form-group">
+                        @if($element->getType() != 'hidden')
+                            <div class="col-xs-3">
+                                <div class="form-group">
+                                    {!! $element->html() !!}
+                                </div>
+                            </div>
+                        @else
                             {!! $element->html() !!}
-                        </div>
-                    </div>
+                        @endif
                     @endforeach
                 </div>
             </div>
