@@ -2,9 +2,12 @@
 
 use Keyhunter\Administrator\Exception;
 
-/** get administrator version */
-function keyhunter_administrator_version () {
-    return '1.0.3';
+if ( ! function_exists('keyhunter_administrator_version')) {
+    
+    /** get administrator version */
+    function keyhunter_administrator_version () {
+        return '1.0.5';
+    }
 }
 
 if (! function_exists('output_boolean'))
@@ -221,6 +224,11 @@ if (! function_exists('form_key'))
     function form_key($label = '')
     {
         return input('key', $label, []);
+    }
+
+    function form_hidden($attributes)
+    {
+        return input('hidden', $attributes);
     }
 
     function form_text($label = '', array $attributes = [])
@@ -450,12 +458,15 @@ if ( ! function_exists('array_fetch')) {
     }
 }
 
-/** render copyright. */
-function keyhunter_administrator_copyright() {
-    return sprintf(
-        '<strong>Copyright © %s <a href="%s">Powered by %s</a>.</strong> All rights reserved.',
-            config('administrator.copyright.years', '2015-2016'),
-            config('administrator.copyright.poweredby', 'https://github.com/keyhunter'),
-            config('administrator.copyright.author', 'Keyhunter')
-        );
+if ( ! function_exists('keyhunter_administrator_copyright')) {
+    
+    /** render copyright. */
+    function keyhunter_administrator_copyright() {
+        return sprintf(
+            '<strong>Copyright © %s <a href="%s">Powered by %s</a>.</strong> All rights reserved.',
+                config('administrator.copyright.years', '2015-2016'),
+                config('administrator.copyright.poweredby', 'https://github.com/keyhunter'),
+                config('administrator.copyright.author', 'Keyhunter')
+            );
+    }
 }

@@ -5,7 +5,7 @@
         <input type="hidden" name="{{ $key }}" value="{{ $value }}" />
         @endforeach
         <div class="row">
-            <div class="col-xs-10">
+            <div class="col-xs-12">
                 <div class="row">
                     @foreach($filter as $element)
                         @if($element->getType() != 'hidden')
@@ -21,8 +21,11 @@
                 </div>
             </div>
 
-            <div class="col-xs-2">
-                <input type="submit" value="Search" class="btn btn-flat btn-lg bg-purple" style="width: 164px"/>
+            <div class="col-xs-3" style="float: right">
+                <input type="submit" value="Search" class="btn btn-flat bg-purple" style="width: 48%; float: left"/>
+
+                <a href="{{ route('admin_model_index', ['page' => app()->make('scaffold.module')->get('page')]) }}"
+                   class="btn btn-flat bg-purple" style="width: 48%; float: right">Reset</a>
             </div>
         </div>
     </form>
