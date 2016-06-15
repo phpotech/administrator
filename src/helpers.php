@@ -19,7 +19,7 @@ if (! function_exists('output_boolean'))
             throw new Exception(sprintf('Unknown property %s in class %s', $field, get_class($row)));
         }
 
-        return ($row->{$field} ? '<i class="fa fa-fw fa-check"></i>' : '');
+        return ($row->{$field} ? '<i class="fa fa-fw fa-check" style="color: #605ca8;"></i>' : '');
     }
 
     /**
