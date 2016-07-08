@@ -458,6 +458,12 @@ if ( ! function_exists('array_fetch')) {
     }
 }
 
+if (!function_exists('settings')) {
+    function settings(){
+        return (new \Keyhunter\Administrator\Model\Settings);
+    }
+}
+
 if ( ! function_exists('keyhunter_administrator_copyright')) {
     
     /** render copyright. */
