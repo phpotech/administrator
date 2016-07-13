@@ -26,7 +26,7 @@ class Settings extends Repository {
             self::$options = self::listOptions();
         }
 
-        return self::$options[$key] ? : $default;
+		return isset(self::$options[$key]) ? : $default;
     }
 
     /**
