@@ -12,20 +12,21 @@ class Settings extends Repository {
 
     static protected $options = null;
 
-    /**
+  /**
      * Fetch value by key
      *
      * @param $key
+     * @param $default
      * @return null
      */
-    static public function getOption($key)
+    static public function getOption($key, $default = null)
     {
         if (null === self::$options)
         {
             self::$options = self::listOptions();
         }
 
-        return self::$options[$key] ? : null;
+		return isset(self::$options[$key]) ? self::$options[$key] : $default;
     }
 
     /**

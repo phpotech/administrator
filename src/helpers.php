@@ -2,9 +2,12 @@
 
 use Keyhunter\Administrator\Exception;
 
-/** get administrator version */
-function keyhunter_administrator_version () {
-    return '1.0.3';
+if ( ! function_exists('keyhunter_administrator_version')) {
+    
+    /** get administrator version */
+    function keyhunter_administrator_version () {
+        return '1.0.5';
+    }
 }
 
 if (! function_exists('output_boolean'))
@@ -16,7 +19,7 @@ if (! function_exists('output_boolean'))
             throw new Exception(sprintf('Unknown property %s in class %s', $field, get_class($row)));
         }
 
-        return ($row->{$field} ? '<i class="fa fa-fw fa-check"></i>' : '');
+        return ($row->{$field} ? '<i class="fa fa-fw fa-check" style="color: #605ca8;"></i>' : '');
     }
 
     /**
@@ -123,6 +126,32 @@ if (! function_exists('filter_text'))
         ];
     }
 
+    function filter_hidden(Closure $query = null)
+    {
+        return [
+            'type' => 'hidden',
+            'query' => $query
+        ];
+    }
+	
+	/**
+     * Generate NumberRange filter config
+     *
+     * @param string $label
+     * @param array $params
+     * @param Closure $query
+     * @return array
+     */
+    function filter_number_range($label = '', array $params, Closure $query = null)
+    {
+        return [
+            'type' => 'number_range',
+            'label' => $label,
+            'params' => $params,
+            'query' => $query
+        ];
+    }
+
     /**
      * Generate DateRange filter config
      *
@@ -195,6 +224,11 @@ if (! function_exists('form_key'))
     function form_key($label = '')
     {
         return input('key', $label, []);
+    }
+
+    function form_hidden($attributes)
+    {
+        return input('hidden', $attributes);
     }
 
     function form_text($label = '', array $attributes = [])
@@ -424,12 +458,21 @@ if ( ! function_exists('array_fetch')) {
     }
 }
 
-/** render copyright. */
-function keyhunter_administrator_copyright() {
-    return sprintf(
-        '<strong>Copyright © %s <a href="%s">Powered by %s</a>.</strong> All rights reserved.',
-            config('administrator.copyright.years', '2015-2016'),
-            config('administrator.copyright.poweredby', 'https://github.com/keyhunter'),
-            config('administrator.copyright.author', 'Keyhunter')
-        );
+if (!function_exists('settings')) {
+    function settings(){
+        return (new \Keyhunter\Administrator\Model\Settings);
+    }
+}
+
+if ( ! function_exists('keyhunter_administrator_copyright')) {
+    
+    /** render copyright. */
+    function keyhunter_administrator_copyright() {
+        return sprintf(
+            '<strong>Copyright © %s <a href="%s">Powered by %s</a>.</strong> All rights reserved.',
+                config('administrator.copyright.years', '2015-2016'),
+                config('administrator.copyright.poweredby', 'https://github.com/keyhunter'),
+                config('administrator.copyright.author', 'Keyhunter')
+            );
+    }
 }

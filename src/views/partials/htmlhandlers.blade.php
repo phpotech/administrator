@@ -13,6 +13,10 @@ $(function()
         multidate: true
     });
 
+    $('input[data-filter-type="number_range"]').slider({
+        //
+    });
+
     // activate language switcher
     $('button[data-locale]').click(function() {
         var fn = $(this), locale = fn.data('locale');
@@ -26,6 +30,14 @@ $(function()
                 fn.addClass('hidden');
             }
         });
-    })
+    });
+
+    $(document).ready(function(){
+        $('input[type=checkbox]', 'input[type=radio]').iCheck({
+            checkboxClass: 'icheckbox_minimal-purple',
+            radioClass: 'iradio_minimal-purple',
+            increaseArea: '20%' // optional
+        });
+    });
 });
 </script>

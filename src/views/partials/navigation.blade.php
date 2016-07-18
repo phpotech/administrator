@@ -14,7 +14,8 @@
             @if(isset($options['page_header']))
                 <li class="header">{{ strtoupper($options['page_header']) }}</li>
             @endif
-            <li class="{{ (isset($options['pages']) ? 'treeview active' : '') }}">
+            <!--todo: find better way instead array_key_exists() to show active nav -->
+            <li class="{{ (isset($options['pages']) ? (array_key_exists($navigation->getCurrentModule(), $options['pages'])) ? 'treeview active' : '' : '') }}">
                 <a href="{{ isset($options['link']) ? $options['link'] : '#' }}">
                     <i class="fa {{ $options['icon'] }}"></i>
                     <span>{{ $options['title'] }}</span>
@@ -24,7 +25,7 @@
                 </a>
 
                 @if (isset($options['pages']))
-                    <ul class="treeview-menu" style="display: block">
+                    <ul class="treeview-menu">
                         @foreach($options['pages'] as $page)
                             <li class="{{ ($page['page'] == $navigation->getCurrentModule() ? 'active' : '') }}"><a
                                         href="{{ $page['link'] }}">

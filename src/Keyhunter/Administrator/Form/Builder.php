@@ -127,6 +127,10 @@ class Builder
             {
                 $editors[] = 'ckeditor';
             }
+			else if ($field->getType() == 'wysihtml5' && ! in_array('tinymce', $editors))
+            {
+                $editors[] = 'wysihtml5';
+            }
         }
 
         return $editors;

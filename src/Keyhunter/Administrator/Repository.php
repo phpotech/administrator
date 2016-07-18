@@ -207,6 +207,15 @@ abstract class Repository extends Eloquent implements RepositoryInterface
                 list($date_from, $date_to) = explode(' - ', $value);
                 $this->query->whereBetween("{$table}.{$name}", [$date_from, $date_to]);
                 break;
+
+            case 'numberrange':
+                list($from, $to) = explode(',', $value);
+                $this->query->whereBetween("{$table}.{$name}", [$from, $to]);
+                break;
+
+             case 'hidden':
+                $this->query->where("{$table}.{$name}", $value);
+                break;
         }
     }
 }

@@ -19,7 +19,9 @@ class Filter implements FilterInterface
         'text'          => 'Filters\Element\Text',
         'select'        => 'Filters\Element\Select',
         'date'          => 'Filters\Element\Date',
-        'daterange'     => 'Filters\Element\Daterange'
+        'daterange'     => 'Filters\Element\Daterange',
+        'number_range'  => 'Filters\Element\NumberRange',
+        'hidden'        => 'Filters\Element\Hidden'
     ];
 
     /**
