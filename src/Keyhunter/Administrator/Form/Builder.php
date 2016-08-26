@@ -98,7 +98,7 @@ class Builder
      */
     private function createElement($type, $options, $name)
     {
-        $className = $this->fieldTypes[$type];
+        $className = $this->getFieldTypes()[$type];
         if (!$className) {
             throw new UnknownFieldTypeException(sprintf("Unknown field of type '%s'", $options['type']));
         }
@@ -106,6 +106,41 @@ class Builder
         $element = (new $className($name))->initFromArray($options);
 
         return $element;
+    }
+
+    /**
+     * Get all field types
+     *
+     * @return array
+     */
+    public function getFieldTypes()
+    {
+        if($custom = $this->loadCustomFieldTypes())
+            return array_merge($custom, $this->fieldTypes);
+
+        return $this->fieldTypes;
+    }
+
+    /**
+     * Check if type is valid.
+     *
+     * @param $class
+     * @return bool
+     */
+    public function validateFieldType($class)
+    {
+        return (bool) $class instanceof Element;
+    }
+
+    /**
+     * Get the list of custom fields.
+     *
+     * @return array
+     */
+    public function loadCustomFieldTypes()
+    {
+        //todo: change this stuff to provider.
+        return config('administrator.custom_field_types');
     }
 
     public function getEditors()
@@ -127,7 +162,7 @@ class Builder
             {
                 $editors[] = 'ckeditor';
             }
-			else if ($field->getType() == 'wysihtml5' && ! in_array('tinymce', $editors))
+            else if ($field->getType() == 'wysihtml5' && ! in_array('tinymce', $editors))
             {
                 $editors[] = 'wysihtml5';
             }
