@@ -6,7 +6,7 @@ if ( ! function_exists('keyhunter_administrator_version')) {
     
     /** get administrator version */
     function keyhunter_administrator_version () {
-        return '1.0.5';
+        return '1.0.6';
     }
 }
 
@@ -397,6 +397,18 @@ if (! function_exists('form_key'))
     function translatable()
     {
         return ['translatable' => true];
+    }
+
+    /**
+     * Add description for field
+     *
+     * @uses keyhunter/administrator package
+     *
+     * @return array
+     */
+    function description($description)
+    {
+        return ['description' => $description];
     }
 
     /**

@@ -51,5 +51,10 @@ return [
      * Enable Admin Event subscriber
      */
     'subscriber'      => '\Keyhunter\Administrator\Subscriber\AdminSubscriber',
-    'log_actions'     => false
+    'log_actions'     => false,
+
+    'custom_field_types' => [
+        // Here goes your custom types
+        // 'test' => App\Administrator\Types\AjaxImageUpload::class
+    ]
 ];
